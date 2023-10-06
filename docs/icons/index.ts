@@ -1,2 +1,2 @@
-export { default as IconCrescent } from './IconCrescent.vue';
-export { default as IconSun } from './IconSun.vue';
+export { default as IconTogglerTheme } from './IconTogglerTheme.vue';
+export { default as IconTogglerMenu } from './IconTogglerMenu.vue';

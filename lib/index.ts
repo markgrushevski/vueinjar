@@ -1,2 +1,2 @@
-export * from './WrapperIcon';
-export * from './WeatherWidget';
+export * from './components';
+export * from './utils';

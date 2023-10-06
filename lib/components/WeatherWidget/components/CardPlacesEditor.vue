@@ -49,7 +49,8 @@ const targetIndex = ref(0);
 .card {
     position: absolute;
 
-    width: calc(100% - 8px * 2);
+    width: 100%;
+    padding: 0 8px;
 }
 
 .card > *:not(:first-child) {

@@ -1,11 +1,14 @@
 <script setup lang="ts">
+// TODO: add loading state
+// TODO: add not found state
+// TODO: add network problems state
+// TODO: add soft transitions
+
 import { useForecastsStore } from './store';
 import { onBeforeMount, onBeforeUnmount, ref } from 'vue';
 import { CardForecast, CardPlacesEditor } from './components';
 import { getCardinalDirection, getDewPoint } from './lib';
 import { HeaderCard, IconClose, IconSettings } from './ui';
-
-// TODO: add loading icon, add soft transitions
 
 const props = withDefaults(
     defineProps<{
@@ -54,7 +57,13 @@ onBeforeUnmount(() => clearInterval(refetchWeathers));
 </script>
 
 <template>
-    <div :class="{ [WeatherWidget.widget]: true, [WeatherWidget['widget_dark']]: theme === 'dark' }">
+    <div
+        :class="{
+            [WeatherWidget.widget]: true,
+            [WeatherWidget['widget_dark']]: theme === 'dark',
+            [WeatherWidget['widget_settings-open']]: showSettings
+        }"
+    >
         <IconClose v-if="showSettings" :class="WeatherWidget.icon" @click="showSettings = !showSettings" />
         <IconSettings v-else :class="WeatherWidget.icon" @click="showSettings = !showSettings" />
 
@@ -110,19 +119,23 @@ onBeforeUnmount(() => clearInterval(refetchWeathers));
     --bg-secondary: hsl(0deg 0% 94%);
     --bg-primary: hsl(0deg 0% 100%);
 
-    display: flex;
+    display: inline-flex;
     position: relative;
     flex-direction: column;
     align-items: center;
 
     width: 270px;
+
     padding: 8px;
+
     border-radius: 20px;
 
     background-color: var(--bg-primary);
 
     /* box-shadow: hsl(0deg 0% 0% / 16%) 0 1px 4px; */
     fill: var(--text-secondary);
+
+    text-align: start;
 }
 
 .widget_dark {
@@ -134,6 +147,10 @@ onBeforeUnmount(() => clearInterval(refetchWeathers));
     box-shadow: none;
 
     text-shadow: none;
+}
+
+.widget_settings-open {
+    min-height: 130px;
 }
 
 .icon {

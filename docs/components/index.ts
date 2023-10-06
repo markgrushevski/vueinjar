@@ -1,3 +1,2 @@
-export { default as SectionComponent } from './SectionComponent.vue';
+export * from './sections';
 export { default as TheLogo } from './TheLogo.vue';
-export { default as SectionDocs } from './SectionDocs.vue';

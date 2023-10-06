@@ -1,6 +1,7 @@
 {
     "private": "true",
     "devDependencies": {
+        "vue-router": "^4.2.5",
         "vueinjar": "^0.2.0"
     }
 }
